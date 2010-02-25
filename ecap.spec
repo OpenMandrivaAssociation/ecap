@@ -1,6 +1,6 @@
 %define name    ecap
 %define version 0.0.2
-%define release %mkrel 1
+%define release %mkrel 2
 %define major 0
 %define libname %mklibname %{name}  %{major}
 %define develname %mklibname %{name} -d
@@ -40,7 +40,7 @@ software.
 %package        -n     %{develname}
 Summary:        Header files for the dssl library
 Group:          Development/C
-#Requires:       %{libname} = %{version}
+Requires:       %{name} = %{version}
 Provides:       %{name}-devel = %{version}-%{release}
 
 %description    -n %{develname}
