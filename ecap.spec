@@ -69,6 +69,7 @@ software.  These are .h files.
 
 %files -n %{libname}
 %defattr(-,root,root)
+%doc LICENSE
 %{_libdir}/libecap.so.%{major}*
 
 
