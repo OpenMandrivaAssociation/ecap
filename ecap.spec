@@ -1,6 +1,6 @@
 %define name    ecap
 %define version 0.0.2
-%define release %mkrel 3
+%define release %mkrel 4
 %define major 0
 %define libname %mklibname %{name}  %{major}
 %define develname %mklibname %{name} -d
