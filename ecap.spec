@@ -1,6 +1,6 @@
 %define name    ecap
-%define version 0.0.2
-%define release %mkrel 5
+%define version 0.0.3
+%define release %mkrel 1
 %define major 0
 %define libname %mklibname %{name}  %{major}
 %define develname %mklibname %{name} -d
@@ -13,7 +13,6 @@ License:    BSD
 Group:      Networking/Other
 URL:        http://www.e-cap.org/
 Source:     http://www.measurement-factory.com/tmp/ecap/libecap-%{version}.tar.gz
-Patch0:		libecap-mandriva-include.patch
 BuildRequires:  kernel-headers
 %if %mdkversion < 200800
 BuildRoot:  %{_tmppath}/%{name}-%{version}
@@ -54,7 +53,6 @@ software.  These are .h files.
 
 %prep
 %setup -q -n libecap-%{version}
-%patch0 -p1 -b .kernel
 
 #export LIBS=-lpcap 
 %configure2_5x --enable-shared --enable-std-include
@@ -79,5 +77,4 @@ software.  These are .h files.
 %{_libdir}/libecap.so
 %{_libdir}/libecap.a
 %{_libdir}/libecap.la
-%exclude /usr/src/debug/libecap-0.0.2/src/libecap/*
 
