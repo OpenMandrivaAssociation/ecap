@@ -61,4 +61,5 @@ rm -f %{buildroot}%{_libdir}/libecap.la
 %{_includedir}/libecap/*
 %{_libdir}/libecap.so
 %{_libdir}/libecap.a
+%{_libdir}/pkgconfig/libecap.pc
 
