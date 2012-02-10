@@ -1,22 +1,16 @@
-%define name    ecap
-%define version 0.0.3
-%define release %mkrel 3
 %define major 0
 %define libname %mklibname %{name}  %{major}
 %define develname %mklibname %{name} -d
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Summary:    eCAP library
-License:    BSD
-Group:      Networking/Other
-URL:        http://www.e-cap.org/
-Source:     http://www.measurement-factory.com/tmp/ecap/libecap-%{version}.tar.gz
-BuildRequires:  kernel-headers
-%if %mdkversion < 200800
-BuildRoot:  %{_tmppath}/%{name}-%{version}
-%endif
+Name:		ecap
+Version:	0.0.3
+Release:	4
+Summary:	eCAP library
+License:	BSD
+Group:		Networking/Other
+URL:		http://www.e-cap.org/
+Source0:	http://www.measurement-factory.com/tmp/ecap/libecap-%{version}.tar.gz
+BuildRequires:	kernel-headers
 
 %description
 eCAP is a software interface that allows a network application, such as an 
@@ -35,46 +29,36 @@ Provides:       %{name} = %{version}-%{release}
 DSSL library is a network caputre and SSL decryption toolkit useful for snort and other SSL aware
 software.
 
-
-%package        -n     %{develname}
+%package -n     %{develname}
 Summary:        Header files for the dssl library
 Group:          Development/C
-Requires:       %{name} = %{version}
+Requires:       %{libname} = %{version}
 Provides:       %{name}-devel = %{version}-%{release}
 
 %description    -n %{develname}
 DSSL library is a network caputre and SSL decryption toolkit useful for snort and other SSL aware
 software.  These are .h files.
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
 %prep
-%setup -q -n libecap-%{version}
-
-#export LIBS=-lpcap 
-%configure2_5x --enable-shared --enable-std-include
+%setup -qn libecap-%{version}
 
 %build
+%configure2_5x \
+	--enable-shared \
+	--enable-std-include
+
 %make
+
 %install
 %makeinstall_std
-
-%clean
-%{__rm} -rf %{buildroot}
+rm -f %{buildroot}%{_libdir}/libecap.la
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc LICENSE
 %{_libdir}/libecap.so.%{major}*
 
-
 %files  -n %{develname}
-%defattr(-,root,root)
 %{_includedir}/libecap/*
 %{_libdir}/libecap.so
 %{_libdir}/libecap.a
-%{_libdir}/libecap.la
 
