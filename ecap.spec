@@ -1,14 +1,14 @@
-%define major 2
-%define libname %mklibname %{name}  %{major}
-%define develname %mklibname %{name} -d
+%define major	2
+%define libname	%mklibname %{name}  %{major}
+%define devname	%mklibname %{name} -d
 
+Summary:	eCAP library
 Name:		ecap
 Version:	0.2.0
-Release:	2
-Summary:	eCAP library
+Release:	3
 License:	BSD
 Group:		Networking/Other
-URL:		http://www.e-cap.org/
+Url:		http://www.e-cap.org/
 Source0:	http://www.measurement-factory.com/tmp/ecap/libecap-%{version}.tar.gz
 BuildRequires:	kernel-headers
 
@@ -29,13 +29,13 @@ Provides:	%{name} = %{version}-%{release}
 DSSL library is a network caputre and SSL decryption toolkit useful for
 snort and other SSL aware software.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Header files for the dssl library
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description    -n %{develname}
+%description    -n %{devname}
 DSSL library is a network caputre and SSL decryption toolkit useful for
 snort and other SSL aware software.  These are .h files.
 
@@ -44,6 +44,7 @@ snort and other SSL aware software.  These are .h files.
 
 %build
 %configure2_5x \
+	--disable-static \
 	--enable-shared \
 	--enable-std-include
 
@@ -51,63 +52,13 @@ snort and other SSL aware software.  These are .h files.
 
 %install
 %makeinstall_std
-rm -f %{buildroot}%{_libdir}/libecap.la
 
 %files -n %{libname}
 %doc LICENSE
 %{_libdir}/libecap.so.%{major}*
 
-%files  -n %{develname}
+%files  -n %{devname}
 %{_includedir}/libecap/*
 %{_libdir}/libecap.so
-%{_libdir}/libecap.a
 %{_libdir}/pkgconfig/libecap.pc
-
-
-
-%changelog
-* Sat Feb 11 2012 Matthew Dawkins <mattydaw@mandriva.org> 0.2.0-1
-+ Revision: 772536
-- fixed files list
-- new version 0.2.0
-- new major 2
-
-* Sat Feb 11 2012 Matthew Dawkins <mattydaw@mandriva.org> 0.0.3-4
-+ Revision: 772531
-- rebuild
-- cleaned up spec
-
-* Tue May 03 2011 Oden Eriksson <oeriksson@mandriva.com> 0.0.3-3
-+ Revision: 664117
-- mass rebuild
-
-* Sun Mar 20 2011 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 0.0.3-2
-+ Revision: 647069
-- Rebuild
-
-* Wed Dec 29 2010 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 0.0.3-1mdv2011.0
-+ Revision: 625816
-- 0.0.3
-
-* Thu Dec 02 2010 Oden Eriksson <oeriksson@mandriva.com> 0.0.2-5mdv2011.0
-+ Revision: 605094
-- rebuild
-
-* Sat Mar 20 2010 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 0.0.2-4mdv2010.1
-+ Revision: 525373
-- Bump release
-
-* Fri Mar 19 2010 Oden Eriksson <oeriksson@mandriva.com> 0.0.2-3mdv2010.1
-+ Revision: 525320
-- bump release
-- add the LICENSE
-
-* Thu Feb 25 2010 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 0.0.2-2mdv2010.1
-+ Revision: 510857
-- Fix lib requires
-
-* Wed Feb 24 2010 Luis Daniel Lucio Quiroz <dlucio@mandriva.org> 0.0.2-1mdv2010.1
-+ Revision: 510531
-- import ecap
-
 
