@@ -1,11 +1,11 @@
-%define major	2
+%define major	3
 %define libname	%mklibname %{name}  %{major}
 %define devname	%mklibname %{name} -d
 
 Summary:	eCAP library
 Name:		ecap
-Version:	0.2.0
-Release:	10
+Version:	1.0.0
+Release:	1
 License:	BSD
 Group:		Networking/Other
 Url:		http://www.e-cap.org/
@@ -43,8 +43,8 @@ snort and other SSL aware software.  These are .h files.
 %setup -qn libecap-%{version}
 
 %build
-%configure2_5x \
-	--disable-static \
+export CXX=g++
+%configure \
 	--enable-shared \
 	--enable-std-include
 

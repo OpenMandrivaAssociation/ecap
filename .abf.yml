@@ -1,2 +1,4 @@
+removed_sources:
+  libecap-0.2.0.tar.gz: aa32d084e062668376194f2caae88ed3ce271967
 sources:
-  "libecap-0.2.0.tar.gz": aa32d084e062668376194f2caae88ed3ce271967
+  libecap-1.0.0.tar.gz: 0bf9e4eedc5e653b569f334eb410e0bc8939b241
