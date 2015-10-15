@@ -1,10 +1,11 @@
 %define major	3
 %define libname	%mklibname %{name}  %{major}
 %define devname	%mklibname %{name} -d
+%define debug_package %{nil}
 
 Summary:	eCAP library
 Name:		ecap
-Version:	1.0.0
+Version:	1.0.1
 Release:	1
 License:	BSD
 Group:		Networking/Other
