@@ -6,7 +6,7 @@
 Summary:	eCAP library
 Name:		ecap
 Version:	1.0.1
-Release:	2
+Release:	3
 License:	BSD
 Group:		Networking/Other
 Url:		http://www.e-cap.org/
