@@ -8,7 +8,7 @@ Version:	1.0.1
 Release:	4
 License:	BSD
 Group:		Networking/Other
-Url:		http://www.e-cap.org/
+Url:		https://www.e-cap.org/
 Source0:	http://www.measurement-factory.com/tmp/ecap/libecap-%{version}.tar.gz
 BuildRequires:	kernel-headers
 
